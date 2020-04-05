@@ -1,0 +1,25 @@
+<!DOCTYPE html>​
+<html lang="en">
+
+<head>
+    <title>USB List</title>​
+</head>
+
+<body>
+    <form action={{$.URLPath}} method="post">
+        <label> click </label>
+        <button name="initialization" class="btn btn-primary" value=true>Initialization
+        </button>
+        <label> to initialize devices </label>
+    </form>
+    {{ range .Data }}
+    <form action={{$.URLPath}} method="post">
+        <label>{{.Number }}. click </label>
+        <button style="background-color:{{ if .State }}green{{ else }}red{{ end }};color:white;width:150px;" name="id" value="{{ .ID }}">
+            {{if .State }}on{{ else }}off{{ end }}
+        </button>
+        <label> to {{ if .State }}disable{{ else }}enable{{ end }} card <b>{{ .TITLE }}</b> with kpp <b>{{ .KPP }}</b> фамилия <b>{{ .SecondName }}</b> действует с <b>{{ .NotBefore }}</b>  </b> </label>
+    </form>
+    {{ end }}
+</body>
+</html>
